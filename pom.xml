@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>iot-device-telemetry</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>iot-device-telemetry</name>
+	<description>Iot telemetry project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<azure.version>2.1.2</azure.version>
+		<resource.group.name>IotPlatformComDev</resource.group.name>
+		<webapp.name>sktiotcomwebapp02dev</webapp.name>
+		<region>Korea Central</region>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-cosmosdb-spring-boot-starter</artifactId>
+			<version>2.0.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
+		<!-- For Test By Joo-->
+
+		<!--For spring security test -->
+
+		<!--For spring Mysql -->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- For Test By Joo-->
+
+		<!-- Support for JDK 11 -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.23.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-webapp-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<deploymentType>jar</deploymentType>
+
+					<!--
+                                        <appSettings>
+                                            <property>
+                                                <name>JAVA_OPTS</name>
+                                                <value>-Dserver.port=8030</value>
+                                            </property>
+                                        </appSettings>-->
+
+
+					<resourceGroup>${resource.group.name}</resourceGroup>
+					<appName>${webapp.name}</appName>
+					<region>${region}</region>
+
+					<!--<linuxRuntime>jre8</linuxRuntime>-->
+					<javaVersion>1.8</javaVersion>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
